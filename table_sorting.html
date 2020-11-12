@@ -39,12 +39,22 @@
             var column = $(this).data('column')
             var order = $(this).data('order')
             console.log('Col clikced', column, order)
+
+            if(order == 'desc'){
+                $(this).data('order', "asc")
+                myArray = myArray.sort((a,b) => a[column] > b[column] ? 1: -1)
+            }else{
+                $(this).data('order', "desc")
+                myArray = myArray.sort((a,b) => a[column] < b[column] ? 1: -1)
+            }
+          buildTable(myArray)
         })
 
         buildTable(myArray)
 
         function buildTable(data){
             var table = document.getElementById('myTable')
+            table.innerHTML=''
 
             for(var i = 0; i <data.length; i++){
                 var row = `<tr>
