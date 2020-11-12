@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Table</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+    <style>
+        th{
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+
+    <table class="table table-striped">
+        <tr class="bg-info">
+            <th>Name</th>
+            <th>Age</th>
+            <th>Birthday</th>
+        </tr>
+        <tbody id="myTable">
+
+        </tbody>
+    </table>
+
+    <script>
+        var myArray = [
+            {'name':'Michael', 'age':'30', 'birthday':'11/10/1998'},
+            {'name':'Rose', 'age':'23', 'birthday':'4/1/2000'},
+            {'name':'Dan', 'age':'43', 'birthday':'2/5/1978'},
+            {'name':'Camile', 'age':'43', 'birthday':'4/10/1998'},
+            {'name':'Mike', 'age':'23', 'birthday':'23/7/1999'},
+        ]
+
+        buildTable(myArray)
+
+        function buildTable(data){
+            var table = document.getElementById('myTable')
+
+            for(var i = 0; i <data.length; i++){
+                var row = `<tr>
+                                <td>${data[i].name}</td>
+                                <td>${data[i].age}</td>
+                                <td>${data[i].birthday}</td>
+                                </tr>`
+                table.innerHTML += row
+            }
+        }
+    </script>
+
+</body>
+</html>
