@@ -17,9 +17,9 @@
 
     <table class="table table-striped">
         <tr class="bg-info">
-            <th data-column="name" data-order="desc">Name</th>
-            <th data-column="age" data-order="desc">Age</th>
-            <th data-column="birthday" data-order="desc">Birthday</th>
+            <th data-column="name" data-order="desc">Name &#9650</th>
+            <th data-column="age" data-order="desc">Age &#9650</th>
+            <th data-column="birthday" data-order="desc">Birthday &#9650</th>
         </tr>
         <tbody id="myTable">
 
@@ -38,15 +38,19 @@
         $('th').on('click', function(){
             var column = $(this).data('column')
             var order = $(this).data('order')
-            console.log('Col clikced', column, order)
+            var text = $(this).html()
+            text = text.substring(0,text.length-1)
 
             if(order == 'desc'){
                 $(this).data('order', "asc")
                 myArray = myArray.sort((a,b) => a[column] > b[column] ? 1: -1)
+                text += '&#9660'
             }else{
                 $(this).data('order', "desc")
                 myArray = myArray.sort((a,b) => a[column] < b[column] ? 1: -1)
+                text += '&#9650'
             }
+            $(this).html(text)
           buildTable(myArray)
         })
 
